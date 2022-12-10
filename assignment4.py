@@ -33,7 +33,7 @@ def add_student():
         writer = csv.writer(f)
         writer.writerows([student_data])
 
-    print("Data saved successfully"
+    print("Data saved successfully")
     input("Press any button to continue")
     return
 
