@@ -48,7 +48,7 @@ def view_students():
         reader = csv.reader(f)
         for x in student_details:
             print(x, end='\t |')
-        print("\n-----------------------------------------------------------------")
+        print("\n----------------------------------")
 
         for row in reader:
             for item in row:
@@ -104,4 +104,16 @@ def updating_student_dets():
                 else:
                     updated_data.append(row)
                 counter += 1
+
+
+    
+    if index_of_students is not None:
+        with open(data_for_students, "w", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerows(updated_data)
+    else:
+        print("Roll No. not found in our database")
+
+    input("Press any key to continue")
+
 
