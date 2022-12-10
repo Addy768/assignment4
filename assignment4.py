@@ -14,3 +14,46 @@ def display_menu():
     print("4. Update Student")
     print("5. Delete Student")
     print("6. Quit")
+
+
+def add_student():
+    print("-------------------------")
+    print("Add Information regarding student")
+    print("-------------------------")
+    global student_details
+    global data_for_students
+
+
+    student_data = []
+    for field in student_details:
+        value = input("Enter " + field + ": ")
+        student_data.append(value)
+
+    with open(data_for_students, "a", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerows([student_data])
+
+    print("Data saved successfully"
+    input("Press any button to continue")
+    return
+
+
+def view_students():
+    global student_details
+    global data_for_students
+
+    print("--- Student Records ---")
+
+    with open(data_for_students, "r", encoding="utf-8") as f:
+        reader = csv.reader(f)
+        for x in student_details:
+            print(x, end='\t |')
+        print("\n-----------------------------------------------------------------")
+
+        for row in reader:
+            for item in row:
+                print(item, end="\t |")
+            print("\n")
+
+    input("Press any button to continue")
+
