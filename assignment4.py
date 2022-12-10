@@ -57,3 +57,25 @@ def view_students():
 
     input("Press any button to continue")
 
+def searching__student():
+    global student_details
+    global data_for_students
+
+    print("--- Search Student ---")
+    roll = input("please Enter roll no. of the student to search: ")
+    with open(data_for_students, "r", encoding="utf-8") as f:
+        reader = csv.reader(f)
+        for comumns1 in reader:
+            if len(comumns1) > 0:
+                if roll == comumns1[0]:
+                    print("----- Student Found -----")
+                    print("Roll: ", comumns1[0])
+                    print("Name: ", comumns1[1])
+                    print("Age: ", comumns1[2])
+                    print("Email: ", comumns1[3])
+                    print("Phone: ", comumns1[4])
+                    break
+        else:
+            print("Roll No. not found in our database")
+    input("Press any button to continue")
+
