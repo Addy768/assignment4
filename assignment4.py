@@ -79,3 +79,29 @@ def searching__student():
             print("Roll No. not found in our database")
     input("Press any button to continue")
 
+
+def updating_student_dets():
+    global student_details
+    global data_for_students
+
+    print("--- Update Student ---")
+    roll = input(" please Enter roll no. of student to update the details: ")
+    index_of_students = None
+    updated_data = []
+    with open(data_for_students, "r", encoding="utf-8") as f:
+        reader = csv.reader(f)
+        counter = 0
+        for row in reader:
+            if len(row) > 0:
+                if roll == row[0]:
+                    index_of_students = counter
+                    print("Student Found: at index ",index_of_students)
+                    student_data = []
+                    for field in student_details:
+                        value = input("Enter " + field + ": ")
+                        student_data.append(value)
+                    updated_data.append(student_data)
+                else:
+                    updated_data.append(row)
+                counter += 1
+
