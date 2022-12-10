@@ -118,13 +118,13 @@ def updating_student_dets():
 
     input("Press any key to continue")
 
-
+### deleting stored data from database
 def delete_student():
     global student_details
     global data_for_students
 
     print("--- Deleting Student data ---")
-    roll = input("Enter roll no. to delete: ")
+    roll = input("Enter roll no. to delete: ")### asking roll number and other details
     student_found = False
     updated_data = []
     with open(data_for_students, "r", encoding="utf-8") as f:
@@ -140,14 +140,17 @@ def delete_student():
 
     if student_found is True:
         with open(data_for_students, "w", encoding="utf-8") as f:
+            ##details being deleted from file
             writer = csv.writer(f)
             writer.writerows(updated_data)
-        print("Roll no. ", roll, " data deleted successfully")
+        print("Roll no. ", roll, " data deleted successfully")###confirmation
     else:
         print("Roll No. not found in our logs")
 
     input("Press any key to continue")
 
+    
+###user choices 
 while True:
     display_menu()
 
