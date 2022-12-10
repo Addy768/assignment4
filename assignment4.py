@@ -117,3 +117,52 @@ def updating_student_dets():
     input("Press any key to continue")
 
 
+def delete_student():
+    global student_details
+    global data_for_students
+
+    print("--- Delete Student ---")
+    roll = input("Enter roll no. to delete: ")
+    student_found = False
+    updated_data = []
+    with open(data_for_students, "r", encoding="utf-8") as f:
+        reader = csv.reader(f)
+        counter = 0
+        for row in reader:
+            if len(row) > 0:
+                if roll != row[0]:
+                    updated_data.append(row)
+                    counter += 1
+                else:
+                    student_found = True
+
+    if student_found is True:
+        with open(data_for_students, "w", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerows(updated_data)
+        print("Roll no. ", roll, "deleted successfully")
+    else:
+        print("Roll No. not found in our database")
+
+    input("Press any key to continue")
+
+while True:
+    display_menu()
+
+    choice = input("Enter your choice: ")
+    if choice == '1':
+        add_student()
+    elif choice == '2':
+        view_students()
+    elif choice == '3':
+        searching__student()
+    elif choice == '4':
+        updating_student_dets()
+    elif choice == '5':
+        delete_student()
+    else:
+        break
+
+print("-------------------------------")
+print(" Thank you for using our system")
+print("-------------------------------")
